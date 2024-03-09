@@ -1,4 +1,4 @@
-**### Image Compression App
+### Image Compression App
 
 This project provides a simple web application and a command-line tool for compressing images efficiently.
 
