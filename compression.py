@@ -3,7 +3,7 @@ import os
 import io
 
 
-def compress_image(input_path, output_path, target_size, quality):
+def compress_image(input_path, output_path, target_size):
     # Open the image
     img = Image.open(input_path)
 
@@ -18,7 +18,7 @@ def compress_image(input_path, output_path, target_size, quality):
     while True:
         # Save image to a bytes buffer
         buf = io.BytesIO()
-        img.save(buf, format='JPEG', optimize=True, quality=quality)
+        img.save(buf, format='JPEG', optimize=True, quality=95)
         buf.seek(0)
 
         # If size is acceptable, save the image to disk
@@ -28,7 +28,10 @@ def compress_image(input_path, output_path, target_size, quality):
             break
         else:
             # Decrease quality and try again
-            quality -= 10
+            target_size -= 10
+            if target_size <= 10:
+                # If size goes below 10KB, break the loop to avoid extreme compression
+                break
 
 
 def main():
@@ -39,7 +42,6 @@ def main():
     # User input
     input_file = input("Enter the name of the image file (with extension): ")
     target_size = int(input("Enter the target size in KB: "))
-    quality = int(input("Enter the image quality level (1-10): "))
 
     # Load input and output paths
     input_path = os.path.join("input_images", input_file)
@@ -49,7 +51,7 @@ def main():
     os.replace(input_file, input_path)
 
     # Compress the image
-    compress_image(input_path, output_path, target_size, quality)
+    compress_image(input_path, output_path, target_size)
 
     print("Image compression successful!")
 
