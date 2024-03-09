@@ -34,6 +34,10 @@ def compress_image(img, output_path, target_size):
 
 
 def main():
+    # Create directories if they don't exist
+    os.makedirs("input_images", exist_ok=True)
+    os.makedirs("compressed_images", exist_ok=True)
+
     st.title("Image Compression App")
 
     # User input for image file
