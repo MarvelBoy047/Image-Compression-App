@@ -1,4 +1,4 @@
-### Image Compression App
+**### Image Compression App
 
 This project provides a simple web application and a command-line tool for compressing images efficiently.
 
@@ -61,3 +61,4 @@ This project provides a simple web application and a command-line tool for compr
 - **compression.py**: Implements the image compression algorithm for the command-line tool.
 - **input_images/**: Folder to store uploaded input images.
 - **compressed_images/**: Folder to store compressed images.
+**
